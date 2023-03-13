@@ -2,18 +2,21 @@ import { useEffect } from 'react';
 import { IssuesAPI } from './Apis/issues';
 
 function App() {
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await IssuesAPI.getData({ sort: 'comments' });
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  // get요청 예시
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const res = await IssuesAPI.getData('angular', 'angular-cli', {
+  //         sort: 'comments',
+  //       });
+  //       console.log(res);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
-    getData();
-  });
+  //   getData();
+  // });
   return <div>:)</div>;
 }
 
