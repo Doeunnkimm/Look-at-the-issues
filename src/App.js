@@ -1,6 +1,8 @@
 import { Global, ThemeProvider } from '@emotion/react';
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router';
 import router from './Routes/routing';
+import { store } from './Stores';
 import globalStyles from './Styles/global';
 import theme from './Styles/theme';
 
@@ -21,12 +23,12 @@ function App() {
   //   getData();
   // });
   return (
-    <>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Global styles={globalStyles} />
         <RouterProvider router={router} />
       </ThemeProvider>
-    </>
+    </Provider>
   );
 }
 
