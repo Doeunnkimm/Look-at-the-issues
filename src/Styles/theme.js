@@ -9,4 +9,6 @@ const PALETTE = {
   },
 };
 
-export default PALETTE;
+const theme = { PALETTE };
+
+export default theme;

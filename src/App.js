@@ -1,5 +1,8 @@
-import { Global } from '@emotion/react';
+import { Global, ThemeProvider } from '@emotion/react';
+import { RouterProvider } from 'react-router';
+import router from './Routes/routing';
 import globalStyles from './Styles/global';
+import theme from './Styles/theme';
 
 function App() {
   // get요청 예시
@@ -19,8 +22,10 @@ function App() {
   // });
   return (
     <>
-      <Global styles={globalStyles} />
-      <div>:)</div>
+      <ThemeProvider theme={theme}>
+        <Global styles={globalStyles} />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </>
   );
 }

@@ -20,3 +20,9 @@ export const FlexColumnCSS = css`
 export const ShadowCSS = css`
   box-shadow: 2px 2px 2px rgb(220, 220, 220);
 `;
+
+export const HoverCSS = css`
+  :hover {
+    cursor: pointer;
+  }
+`;
