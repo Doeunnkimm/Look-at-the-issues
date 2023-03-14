@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { IssuesAPI } from './Apis/issues';
+import { Global } from '@emotion/react';
+import globalStyles from './Styles/global';
 
 function App() {
   // get요청 예시
@@ -17,7 +17,12 @@ function App() {
 
   //   getData();
   // });
-  return <div>:)</div>;
+  return (
+    <>
+      <Global styles={globalStyles} />
+      <div>:)</div>
+    </>
+  );
 }
 
 export default App;
