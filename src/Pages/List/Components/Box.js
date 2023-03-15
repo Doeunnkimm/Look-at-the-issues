@@ -1,14 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { FlexColumnCSS, HoverCSS, ShadowCSS } from '../../../Styles/common';
+import {
+  FlexAlignCSS,
+  FlexColumnCSS,
+  HoverCSS,
+  ShadowCSS,
+} from '../../../Styles/common';
+import { BsChat } from 'react-icons/bs';
 import remarkGfm from 'remark-gfm';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
-function IssueBox({ number, title, body }) {
+function IssueBox({ number, title, body, commentLen, updatedAt }) {
+  console.log(typeof updatedAt);
   return (
     <S.Wrapper>
-      <S.LineContainer>
+      <S.LineContainer
+        css={css`
+          align-items: flex-start;
+        `}
+      >
         <S.BoldText>{number}</S.BoldText>
         <S.Title
           css={css`
@@ -20,6 +31,27 @@ function IssueBox({ number, title, body }) {
       </S.LineContainer>
       <S.ContentBox>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+        <S.LineContainerEnd
+          css={css`
+            margin-top: 30px;
+          `}
+        >
+          <S.SmallText>last updated : {updatedAt}</S.SmallText>
+          <S.IconBox
+            css={css`
+              margin-left: 10px;
+            `}
+          >
+            <BsChat size={19} />
+          </S.IconBox>
+          <S.Text
+            css={css`
+              margin-left: 3px;
+            `}
+          >
+            {commentLen}
+          </S.Text>
+        </S.LineContainerEnd>
       </S.ContentBox>
     </S.Wrapper>
   );
@@ -35,10 +67,16 @@ const Wrapper = styled.div`
   border-radius: 10px;
   padding: 20px;
   ${HoverCSS}
+  :hover {
+    background-color: var(--color-purple);
+  }
 `;
 const LineContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+  ${FlexAlignCSS}
+`;
+const LineContainerEnd = styled.div`
+  ${FlexAlignCSS}
+  justify-content: flex-end;
 `;
 const ContentBox = styled.div`
   padding: 0 40px;
@@ -48,13 +86,35 @@ const ContentBox = styled.div`
 const Text = styled.div`
   font-size: 18px;
 `;
+const SmallText = styled.div`
+  font: 14px;
+`;
 const BoldText = styled(Text)`
   font-weight: bold;
   width: 10%;
+  @media screen and (max-width: 1500px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 770px) {
+    font-size: 14px;
+  }
 `;
 const Title = styled(Text)`
   font-weight: bold;
-  color: ${({ theme }) => theme.PALETTE.gray[300]};
+`;
+const IconBox = styled.div`
+  ${HoverCSS}
+  padding: 3px;
 `;
 
-const S = { Wrapper, LineContainer, ContentBox, Text, Title, BoldText };
+const S = {
+  Wrapper,
+  LineContainer,
+  LineContainerEnd,
+  ContentBox,
+  Text,
+  SmallText,
+  Title,
+  BoldText,
+  IconBox,
+};

@@ -45,6 +45,8 @@ function ListPage() {
               ? issue.body.split('').slice(0, 99).join('') + ' ...'
               : issue.body
           }
+          commentLen={issue.labels.length}
+          updatedAt={issue.updated_at}
         />
       ))}
     </S.Wrapper>
@@ -53,7 +55,7 @@ function ListPage() {
 export default ListPage;
 
 const Wrapper = styled.div`
-  width: 60%;
+  width: 50%;
   margin: 20px auto;
 `;
 
