@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { IssuesAPI } from '../../Apis/issues';
 import { searchActions } from '../../Stores/search';
-import IssueCard from './Card/Card';
+import IssueCard from './Components/Box';
 
 function ListPage() {
   const [issues, setIssues] = useState([]);
