@@ -29,7 +29,7 @@ function Header() {
     const splitText = writeText.split('/');
     const owner = splitText[3];
     const repository = splitText[4];
-    navigate(`/${owner}/${repository}/1/created/30`);
+    navigate(`/${owner}/${repository}/1/created/10`);
   };
 
   return (

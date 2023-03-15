@@ -12,7 +12,6 @@ import remarkGfm from 'remark-gfm';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 function IssueBox({ number, title, body, commentLen, updatedAt }) {
-  console.log(typeof updatedAt);
   return (
     <S.Wrapper>
       <S.LineContainer
