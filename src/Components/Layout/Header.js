@@ -1,20 +1,58 @@
 import styled from '@emotion/styled';
 import { FlexAlignCSS, HoverCSS } from '../../Styles/common';
 import { BiSearchAlt } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { searchActions } from '../../Stores/search';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const dispatch = useDispatch();
+  const searchText = useSelector((store) => store.search.text);
+  const [writeText, setWriteText] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setWriteText(searchText);
+  }, [searchText]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSubmitSearchText();
+    }
+  };
+
+  const onChangeSearchText = (e) => setWriteText(e.target.value);
+
+  const onSubmitSearchText = () => {
+    dispatch(searchActions.editSearchText(writeText));
+    const splitText = writeText.split('/');
+    const owner = splitText[3];
+    const repository = splitText[4];
+    navigate(`/${owner}/${repository}/1/created/30`);
+  };
+
   return (
     <S.Wrapper>
       <S.Container>
-        <S.Image src="logo.png" alt="logo" />
+        <S.Image
+          onClick={() => (window.location.href = '/')}
+          src={`${process.env.PUBLIC_URL}/logo.png`}
+          alt="logo"
+        />
         <S.Text>
           이슈를
           <br />
           보넷
         </S.Text>
         <S.InputBox>
-          <S.Input placeholder="깃허브 레포지토리 주소를 복붙하세요 !" />
-          <S.IconBox>
+          <S.Input
+            value={writeText}
+            onChange={onChangeSearchText}
+            placeholder="깃허브 레포지토리 주소를 복붙하세요 !"
+            onKeyDown={handleKeyPress}
+          />
+          <S.IconBox onClick={onSubmitSearchText}>
             <BiSearchAlt size={40} />
           </S.IconBox>
         </S.InputBox>
@@ -37,6 +75,7 @@ const Container = styled.div`
 `;
 const Image = styled.img`
   width: 10%;
+  ${HoverCSS}
   @media screen and (max-width: 1040px) {
     width: 20%;
   }
