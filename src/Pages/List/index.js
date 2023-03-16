@@ -1,20 +1,26 @@
-import styled from '@emotion/styled';
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { IssuesAPI } from '../../Apis/issues';
-import { searchActions } from '../../Stores/search';
+
+import styled from '@emotion/styled';
 import { FlexAlignCSS } from '../../Styles/common';
-import Pagination from '../../Utils/Pagination';
+
+import { getIssues } from '../../Stores/issues';
+import { searchActions } from '../../Stores/search';
+
 import IssueCard from './Components/Box';
 import PerPageBox from './Components/PerPage';
 import SortBox from './Components/Sort';
+
+import Pagination from '../../Utils/Pagination';
+import Loading from '../../Components/Loading';
 
 const CONST_ITEM_COUNT = 200;
 const LIMIT = 10;
 
 function ListPage() {
-  const [issues, setIssues] = useState([]);
+  const issues = useSelector((store) => store.issue.issues);
+  const getIssuesState = useSelector((store) => store.issue.getIssuesState);
   const { owner, repository, page, sort, per_page } = useParams();
 
   const [goPage, setGoPage] = useState(1);
@@ -22,6 +28,8 @@ function ListPage() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  console.log(issues);
 
   useEffect(() => {
     dispatch(
@@ -35,49 +43,50 @@ function ListPage() {
   }, [goPage]);
 
   const getData = useCallback(async () => {
-    try {
-      const { data } = await IssuesAPI.getData(owner, repository, {
-        page,
-        sort,
-        per_page,
-      });
-      setIssues(data);
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(
+      getIssues({ owner, repository, params: { page, sort, per_page } })
+    );
   }, [page, sort, per_page]);
 
   useEffect(() => {
+    if (getIssuesState.loading === true) {
+    }
     getData();
   }, [getData]);
 
   return (
     <>
-      <S.Wrapper>
-        <S.Line>
-          <SortBox />
-          <PerPageBox />
-        </S.Line>
-        {issues.map((issue) => (
-          <IssueCard
-            number={`🌎 ${issue.number}`}
-            title={issue.title}
-            body={
-              issue.body
-                ? issue.body.split('').slice(0, 99).join('') + ' ...'
-                : issue.body
-            }
-            commentLen={issue.comments}
-            updatedAt={issue.updated_at}
+      {getIssuesState.loading ? (
+        <Loading />
+      ) : (
+        <>
+          <S.Wrapper>
+            <S.Line>
+              <SortBox />
+              <PerPageBox />
+            </S.Line>
+            {issues.map((issue) => (
+              <IssueCard
+                number={`🌎 ${issue.number}`}
+                title={issue.title}
+                body={
+                  issue.body
+                    ? issue.body.split('').slice(0, 99).join('') + ' ...'
+                    : issue.body
+                }
+                commentLen={issue.comments}
+                updatedAt={issue.updated_at}
+              />
+            ))}
+          </S.Wrapper>
+          <Pagination
+            totalPage={totalPage}
+            limit={LIMIT}
+            page={goPage}
+            setPage={setGoPage}
           />
-        ))}
-      </S.Wrapper>
-      <Pagination
-        totalPage={totalPage}
-        limit={LIMIT}
-        page={goPage}
-        setPage={setGoPage}
-      />
+        </>
+      )}
     </>
   );
 }
