@@ -29,8 +29,8 @@ const IconBox = styled.div`
 
 const FilterSpreadBox = styled.div`
   position: absolute;
-  width: 7%;
-  top: 206px;
+  width: calc(7% + 8px);
+  top: 207px;
   display: ${({ state }) => !state && 'none'};
   flex-direction: column;
   background-color: ${({ theme }) => theme.PALETTE.white};
