@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
@@ -8,6 +9,7 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from 'react-icons/md';
+import { css } from '@emotion/react';
 
 function Pagination({ totalPage, limit, page, setPage }) {
   const [currentPageArray, setCurrentPageArray] = useState([]);
@@ -48,6 +50,11 @@ function Pagination({ totalPage, limit, page, setPage }) {
       <S.NextButton
         onClick={() => setPageAndMoveToTop(1)}
         disabled={page === 1}
+        css={css`
+          @media screen and (max-width: 1200px) {
+            display: none;
+          }
+        `}
       >
         <MdKeyboardDoubleArrowLeft size={30} />
       </S.NextButton>
@@ -77,6 +84,11 @@ function Pagination({ totalPage, limit, page, setPage }) {
       <S.NextButton
         onClick={() => setPageAndMoveToTop(totalPage)}
         disabled={page === totalPage}
+        css={css`
+          @media screen and (max-width: 1200px) {
+            display: none;
+          }
+        `}
       >
         <MdKeyboardDoubleArrowRight size={30} />
       </S.NextButton>
@@ -90,16 +102,18 @@ const Wrapper = styled.div`
   margin: 100px auto;
   margin-bottom: 50px;
   ${FlexCenterCSS}
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
 `;
 const IconBox = styled.button``;
 
 const ButtonsContainer = styled.div`
   width: 80%;
   ${FlexCenterCSS}
-  margin: 0 15px;
-
+  margin: 0 auto;
   @media screen and (max-width: 1200px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 const Button = styled.button`
@@ -115,6 +129,9 @@ const Button = styled.button`
     cursor: pointer;
     opacity: 1;
   }
+  @media screen and (max-width: 1200px) {
+    background-color: ${({ theme }) => theme.PALETTE.white};
+  }
   @media screen and (max-width: 670px) {
     font-size: 12px;
   }
@@ -125,7 +142,7 @@ const NextButton = styled.button`
   width: 5%;
   ${HoverCSS}
   @media screen and (max-width: 1200px) {
-    display: none;
+    background-color: ${({ theme }) => theme.PALETTE.white};
   }
 `;
 
