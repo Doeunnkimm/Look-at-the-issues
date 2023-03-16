@@ -99,6 +99,7 @@ const Wrapper = styled.div`
 const Line = styled.div`
   ${FlexAlignCSS}
   justify-content: flex-start;
+  position: relative;
 `;
 
 const S = { Wrapper, Line };
