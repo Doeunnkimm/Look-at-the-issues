@@ -42,7 +42,8 @@ function Pagination({ totalPage, limit, page, setPage }) {
   useEffect(() => {
     const slicedPageArray = sliceArrayByLimit(totalPage, limit);
     setTotalPageArray(slicedPageArray);
-    setCurrentPageArray(slicedPageArray[0]);
+    setCurrentPageArray(slicedPageArray[Math.floor(page / 11)]);
+    console.log('slicedPageArray --> ', slicedPageArray);
   }, [totalPage]);
 
   return (
