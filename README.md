@@ -76,8 +76,8 @@ src
 ### 5. 사용 기술 스택
 기술 스택 | 종류
 |:--|:--|
-언어 |  <img  width="60" src="https://user-images.githubusercontent.com/112946860/225957694-7e3b3669-9216-4271-a7c8-555c8976368b.png" /><br />Javascript
-프론트엔드 | <img width="60" src="https://user-images.githubusercontent.com/112946860/225957071-10a74540-d7b5-457c-821e-91547e62a429.png" /><br />React
+**언어** |  <img  width="60" src="https://user-images.githubusercontent.com/112946860/225957694-7e3b3669-9216-4271-a7c8-555c8976368b.png" /><br />Javascript
+**프론트엔드** | <img width="60" src="https://user-images.githubusercontent.com/112946860/225957071-10a74540-d7b5-457c-821e-91547e62a429.png" /><br />React
 
 사용 라이브러리 | 사용한 부분
 |:--|:--|
@@ -88,7 +88,7 @@ src
 
 ### 6. 요구 사항 구현 내역
 > #### 목록 페이지
->> **1. 이슈 목록은 10개 단위로 페이지네이션 구현**<br />▶️ 10페이지 단위로 마지막 페이지에서 다음 페이지 누르면 다음 10페이지 뜨도록<br />▶️ 현제 페이지 숫자는 포커스 되어있도록<br />▶ 버튼은 [맨처음][이전]1, [2], 3, 4, 5 [다음][맨끝]으로 구현<br />
+>> **1. 이슈 목록은 10개 단위로 페이지네이션 구현**<br />▶️ 10페이지 단위로 마지막 페이지에서 다음 페이지 누르면 다음 10페이지 뜨도록<br />▶️ 현재 페이지 숫자는 포커스 되어있도록<br />▶ 버튼은 [맨처음][이전]1, [2], 3, 4, 5 [다음][맨끝]으로 구현<br />
 ![gittask_1](https://user-images.githubusercontent.com/112946860/225962071-4e27282a-86ec-4916-8cbf-9e438e432dcb.gif)
 >
 >> **2. 필터 기능 구현**<br />▶️ 생성순/업데이트순/댓글순, 10개/20개/50개 씩 보기
