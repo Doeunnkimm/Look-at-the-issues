@@ -29,14 +29,15 @@ function ListPage() {
 
   const dispatch = useDispatch();
 
-  console.log(issues);
-
   useEffect(() => {
     dispatch(
       searchActions.editSearchText(`https://github.com/${owner}/${repository}`)
     );
-    setGoPage(+page);
   }, []);
+
+  useEffect(() => {
+    setGoPage(+page);
+  }, [page]);
 
   useEffect(() => {
     navigate(`/${owner}/${repository}/${goPage}/${sort}/${per_page}`);
@@ -49,8 +50,6 @@ function ListPage() {
   }, [page, sort, per_page]);
 
   useEffect(() => {
-    if (getIssuesState.loading === true) {
-    }
     getData();
   }, [getData]);
 
