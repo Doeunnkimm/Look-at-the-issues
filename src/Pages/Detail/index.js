@@ -46,7 +46,7 @@ function DetailPage() {
                 <S.Text>
                   <strong>Labels</strong>
                   <br />
-                  {anIssue.labels.length > 0
+                  {anIssue.labels && anIssue.labels.length > 0
                     ? anIssue.labels.map((label) => (
                         <S.ItemBox>
                           <S.Item
