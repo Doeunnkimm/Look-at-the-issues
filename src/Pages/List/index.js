@@ -8,7 +8,7 @@ import { FlexAlignCSS } from '../../Styles/common';
 import { getIssues } from '../../Stores/issues';
 import { searchActions } from '../../Stores/search';
 
-import IssueCard from './Components/Box';
+import IssueBox from './Components/Box';
 import PerPageBox from './Components/PerPage';
 import SortBox from './Components/Sort';
 
@@ -66,7 +66,7 @@ function ListPage() {
               <PerPageBox setGoPage={setGoPage} />
             </S.Line>
             {issues.map((issue) => (
-              <IssueCard
+              <IssueBox
                 number={issue.number}
                 title={issue.title}
                 body={

@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
@@ -81,9 +80,12 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const Container = styled.div`
-  width: 55%;
+  width: 70%;
   ${FlexColumnCSS}
   padding-top: 40px;
+  @media screen and (max-width: 1700px) {
+    width: 90%;
+  }
 `;
 
 const Title = styled.div`
@@ -92,6 +94,9 @@ const Title = styled.div`
   font-size: 28px;
   padding-bottom: 18px;
   border-bottom: 1px solid ${({ theme }) => theme.PALETTE.gray[200]};
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
+  }
 `;
 
 const Number = styled.span`
@@ -112,11 +117,20 @@ const Box = styled.div`
   border-radius: 20px;
   margin-right: 30px;
   padding: 20px;
+  @media screen and (max-width: 1700px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 const SideBox = styled.div`
   width: 15%;
   ${FlexColumnCSS}
+  @media screen and (max-width: 1700px) {
+    display: none;
+  }
 `;
 
 const Text = styled.div`
