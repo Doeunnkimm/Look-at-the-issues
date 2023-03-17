@@ -10,16 +10,20 @@ import {
 import { BsChat } from 'react-icons/bs';
 import remarkGfm from 'remark-gfm';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function IssueBox({ number, title, body, commentLen, updatedAt }) {
+  const { owner, repository } = useParams();
+  const navigate = useNavigate();
+
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={() => navigate(`/${owner}/${repository}/${number}`)}>
       <S.LineContainer
         css={css`
           align-items: flex-start;
         `}
       >
-        <S.BoldText>{number}</S.BoldText>
+        <S.BoldText>🌎 {number}</S.BoldText>
         <S.Title
           css={css`
             margin-left: 20px;

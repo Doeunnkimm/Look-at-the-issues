@@ -67,7 +67,7 @@ function ListPage() {
             </S.Line>
             {issues.map((issue) => (
               <IssueCard
-                number={`🌎 ${issue.number}`}
+                number={issue.number}
                 title={issue.title}
                 body={
                   issue.body

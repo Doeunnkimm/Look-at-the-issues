@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <ListPage />,
       },
       {
-        path: '/:owner/:repository/:id',
+        path: '/:owner/:repository/:number',
         element: <DetailPage />,
       },
     ],
