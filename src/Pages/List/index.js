@@ -62,8 +62,8 @@ function ListPage() {
         <>
           <S.Wrapper>
             <S.Line>
-              <SortBox />
-              <PerPageBox />
+              <SortBox setGoPage={setGoPage} />
+              <PerPageBox setGoPage={setGoPage} />
             </S.Line>
             {issues.map((issue) => (
               <IssueCard
@@ -83,6 +83,7 @@ function ListPage() {
             totalPage={totalPage}
             limit={LIMIT}
             page={goPage}
+            nowPage={page}
             setPage={setGoPage}
           />
         </>

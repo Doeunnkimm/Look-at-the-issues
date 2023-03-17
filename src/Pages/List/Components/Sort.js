@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function SortBox() {
+function SortBox({ setGoPage }) {
   const [choice, setChoice] = useState('');
   const navigate = useNavigate();
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -12,6 +12,7 @@ function SortBox() {
   const onOpenFilter = () => setIsOpenFilter((prev) => !prev);
 
   const onClickSortFilter = (filter) => {
+    setGoPage(1);
     navigate(`/${owner}/${repository}/1/${filter}/${per_page}`);
   };
 

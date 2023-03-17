@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { css } from '@emotion/react';
 
-function PerPageBox() {
+function PerPageBox({ setGoPage }) {
   const [choice, setChoice] = useState('');
   const navigate = useNavigate();
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -13,12 +13,12 @@ function PerPageBox() {
   const onOpenFilter = () => setIsOpenFilter((prev) => !prev);
 
   const onClickSortFilter = (filter) => {
+    setGoPage(1);
     navigate(`/${owner}/${repository}/1/${sort}/${filter}`);
   };
 
   useEffect(() => {
     setIsOpenFilter(false);
-    console.log(per_page);
     if (per_page === '10') setChoice('10개씩');
     if (per_page === '20') setChoice('20개씩');
     if (per_page === '50') setChoice('50개씩');
