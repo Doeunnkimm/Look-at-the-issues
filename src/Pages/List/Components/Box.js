@@ -69,6 +69,10 @@ const Wrapper = styled.div`
   :hover {
     background-color: var(--color-purple);
   }
+  @media screen and (max-width: 830px) {
+    padding: 8px;
+    padding-top: 20px;
+  }
 `;
 const LineContainer = styled.div`
   ${FlexAlignCSS}
@@ -100,6 +104,7 @@ const BoldText = styled(Text)`
 `;
 const Title = styled(Text)`
   font-weight: bold;
+  width: 90%;
 `;
 const IconBox = styled.div`
   ${HoverCSS}

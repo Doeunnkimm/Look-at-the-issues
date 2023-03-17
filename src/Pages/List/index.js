@@ -95,6 +95,9 @@ export default ListPage;
 const Wrapper = styled.div`
   width: 50%;
   margin: 20px auto;
+  @media screen and (max-width: 830px) {
+    width: 100%;
+  }
 `;
 const Line = styled.div`
   ${FlexAlignCSS}

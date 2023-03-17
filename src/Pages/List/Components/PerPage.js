@@ -35,15 +35,9 @@ function PerPageBox() {
       <S.FilterSpreadBox
         state={isOpenFilter}
         css={css`
-          left: 137px;
+          left: 15%;
           @media screen and (max-width: 1300px) {
-            left: 36%;
-          }
-          @media screen and (max-width: 945px) {
-            left: 38%;
-          }
-          @media screen and (max-width: 700px) {
-            left: 43%;
+            left: 100px;
           }
         `}
       >
