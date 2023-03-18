@@ -57,34 +57,38 @@ function ListPage() {
 				<Loading />
 			) : (
 				<>
-					<S.Wrapper>
-						<S.Line>
-							<SortBox setGoPage={setGoPage} />
-							<PerPageBox setGoPage={setGoPage} />
-						</S.Line>
-						{issues.length > 0 &&
-							issues.map((issue, idx) => (
-								<IssueBox
-									key={idx}
-									number={issue.number}
-									title={issue.title}
-									body={
-										issue.body
-											? issue.body.split('').slice(0, 99).join('') + ' ...'
-											: issue.body
-									}
-									commentLen={issue.comments}
-									updatedAt={issue.updated_at}
-								/>
-							))}
-					</S.Wrapper>
-					<Pagination
-						totalPage={totalPage}
-						limit={LIMIT}
-						page={goPage}
-						nowPage={page}
-						setPage={setGoPage}
-					/>
+					{issues.length > 0 && (
+						<>
+							<S.Wrapper>
+								<S.Line>
+									<SortBox setGoPage={setGoPage} />
+									<PerPageBox setGoPage={setGoPage} />
+								</S.Line>
+								{issues.length > 0 &&
+									issues.map((issue, idx) => (
+										<IssueBox
+											key={idx}
+											number={issue.number}
+											title={issue.title}
+											body={
+												issue.body
+													? issue.body.split('').slice(0, 99).join('') + ' ...'
+													: issue.body
+											}
+											commentLen={issue.comments}
+											updatedAt={issue.updated_at}
+										/>
+									))}
+							</S.Wrapper>
+							<Pagination
+								totalPage={totalPage}
+								limit={LIMIT}
+								page={goPage}
+								nowPage={page}
+								setPage={setGoPage}
+							/>
+						</>
+					)}
 				</>
 			)}
 		</>
