@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# 이슈를 보넷 !    <img width="70px" src="https://user-images.githubusercontent.com/112946860/225900289-825b8d1f-5384-476c-977e-9137c825ea2c.png" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 1. 프로젝트 설명
+- 본 프로젝트는 [github open API](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-user-account-issues-assigned-to-the-authenticated-user)를 활용한 특정 레포지토리의 issue를 조회할 수 있는 웹 사이트입니다.
+- 아래와 같이 레포지토리의 url주소를 통해 이슈를 쉽게 조회할 수 있도록 했습니다.
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/112946860/225944722-d10ad31d-a9c2-4801-baf0-b431ae89d841.png)
 
-In the project directory, you can run:
+* 메인 페이지
+![image](https://user-images.githubusercontent.com/112946860/225975349-99039979-cca7-48e7-8abd-b78e4008c7c2.png)
 
-### `npm start`
+* 상세 페이지
+![image](https://user-images.githubusercontent.com/112946860/225975417-c7a9e0c0-2f1f-4294-b39b-dfc79f5f6b84.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+- 기간은 22.03.13 ~ 22.03.18 동안 진행했습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. 배포 주소
 
-### `npm run build`
+### 3. 프로젝트 폴더 구조
+```
+src
+│  App.js
+│  index.js
+│
+├─Apis
+│      @core.js
+│      issues.js
+│
+├─Components
+│  │  Loading.js
+│  │
+│  └─Layout
+│          Header.js
+│          index.js
+│
+├─Pages
+│  ├─Detail
+│  │      index.js
+│  │
+│  ├─List
+│  │  │  index.js
+│  │  │
+│  │  └─Components
+│  │          Box.js
+│  │          PerPage.js
+│  │          Sort.js
+│  │          style.js
+│  │
+│  └─Main
+│       index.js
+│      
+├─Routes
+│      routing.js
+│
+├─Stores
+│      index.js
+│      issue.js
+│      issues.js
+│      search.js
+│
+├─Styles
+│      common.js
+│      global.js
+│      theme.js
+│
+└─Utils
+        Pagination.js
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. 팀원
+김도은 | <img width="80" src="https://user-images.githubusercontent.com/112946860/225946174-c843194f-a706-469f-bc40-b374d041f49d.png" />
+|--|--|
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. 사용 기술 스택
+기술 스택 | 종류
+|:--|:--|
+**언어** |  <img  width="60" src="https://user-images.githubusercontent.com/112946860/225957694-7e3b3669-9216-4271-a7c8-555c8976368b.png" /><br />Javascript
+**프론트엔드** | <img width="60" src="https://user-images.githubusercontent.com/112946860/225957071-10a74540-d7b5-457c-821e-91547e62a429.png" /><br />React
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+사용 라이브러리 | 사용한 부분
+|:--|:--|
+**emotion** | 스타일 컴포넌트 구성 시 사용
+**react-router-dom** | URL에 따라 화면을 렌더링 시 사용
+**axios** | api를 통한 비동기 통신 시 사용
+**redux-toolkit** | 전역 상태 관리 시 사용
 
-### `npm run eject`
+### 6. 요구 사항 구현 내역
+> #### 목록 페이지
+>> **1. 이슈 목록은 10개 단위로 페이지네이션 구현**<br />▶️ 10페이지 단위로 마지막 페이지에서 다음 페이지 누르면 다음 10페이지 뜨도록<br />▶️ 현재 페이지 숫자는 포커스 되어있도록<br />▶ 버튼은 [맨처음][이전]1, [2], 3, 4, 5 [다음][맨끝]으로 구현<br />
+![gittask_1](https://user-images.githubusercontent.com/112946860/225962071-4e27282a-86ec-4916-8cbf-9e438e432dcb.gif)
+>
+>> **2. 필터 기능 구현**<br />▶️ 생성순/업데이트순/댓글순, 10개/20개/50개 씩 보기
+![gittask_2](https://user-images.githubusercontent.com/112946860/225963363-9e4fa96a-8b99-45e4-b46f-fb3a82681a17.gif)
+<br /><br />▶️ 뒤로 가기 기능 지원<br/>
+-필터 기능에서 뒤로가기
+![gittask_3](https://user-images.githubusercontent.com/112946860/225964610-58beb644-1c00-4f9e-80f7-172939dc2022.gif)
+<br /><br /><br /><br />-페이지네이션에서 뒤로가기
+![gittask_4](https://user-images.githubusercontent.com/112946860/225973666-ca914629-6e61-4efd-b074-4b22fb7e444c.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 7. 코드 및 깃허브 커밋 컨벤션
+커밋 컨벤션 | 내용
+|:--|:--|
+✨ Feat | 새로운 기능 추가
+💄 Design | 사용자 UI 디자인 추가 및 변경
+🚑 Fix | 이슈 수정
+🛻 Rename | 파일 혹은 폴더명 수정 혹은 이동
+🔥 Remove | 파일 혹은 폴더 
