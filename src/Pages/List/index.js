@@ -64,19 +64,20 @@ function ListPage() {
               <SortBox setGoPage={setGoPage} />
               <PerPageBox setGoPage={setGoPage} />
             </S.Line>
-            {issues.map((issue) => (
-              <IssueBox
-                number={issue.number}
-                title={issue.title}
-                body={
-                  issue.body
-                    ? issue.body.split('').slice(0, 99).join('') + ' ...'
-                    : issue.body
-                }
-                commentLen={issue.comments}
-                updatedAt={issue.updated_at}
-              />
-            ))}
+            {issues.length > 0 &&
+              issues.map((issue) => (
+                <IssueBox
+                  number={issue.number}
+                  title={issue.title}
+                  body={
+                    issue.body
+                      ? issue.body.split('').slice(0, 99).join('') + ' ...'
+                      : issue.body
+                  }
+                  commentLen={issue.comments}
+                  updatedAt={issue.updated_at}
+                />
+              ))}
           </S.Wrapper>
           <Pagination
             totalPage={totalPage}
