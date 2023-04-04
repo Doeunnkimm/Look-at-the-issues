@@ -1,4 +1,5 @@
-# 이슈를 보넷 !    <img width="70px" src="https://user-images.githubusercontent.com/112946860/225900289-825b8d1f-5384-476c-977e-9137c825ea2c.png" />
+<p align="middle"><img width="300px"  src="https://user-images.githubusercontent.com/112946860/225900289-825b8d1f-5384-476c-977e-9137c825ea2c.png" /></p>
+<h1 align="middle">이슈를 보넷 !</h1>    
 
 ### 1. 프로젝트 설명
 - 본 프로젝트는 [github open API](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-user-account-issues-assigned-to-the-authenticated-user)를 활용한 특정 레포지토리의 issue를 조회할 수 있는 웹 사이트입니다.
@@ -12,13 +13,14 @@
 * 상세 페이지
 ![image](https://user-images.githubusercontent.com/112946860/225975417-c7a9e0c0-2f1f-4294-b39b-dfc79f5f6b84.png)
 
-
-
 - 기간은 22.03.13 ~ 22.03.18 동안 진행했습니다.
 
-### 2. 배포 주소
+## 2. 배포 주소
+[이슈를 보넷](https://doeunnkimm-gitapitak-88qaqpitx-doeunnkimm-gitapitask.vercel.app/)
 
-### 3. 프로젝트 폴더 구조
+<br>
+
+## 3. 프로젝트 폴더 구조
 ```
 src
 │  App.js
@@ -69,11 +71,15 @@ src
         Pagination.js
 ```
 
-### 4. 팀원
+<br>
+
+## 4. 팀원
 김도은 | <img width="80" src="https://user-images.githubusercontent.com/112946860/225946174-c843194f-a706-469f-bc40-b374d041f49d.png" />
 |--|--|
 
-### 5. 사용 기술 스택
+<br>
+
+## 5. 사용 기술 스택
 기술 스택 | 종류
 |:--|:--|
 **언어** |  <img  width="60" src="https://user-images.githubusercontent.com/112946860/225957694-7e3b3669-9216-4271-a7c8-555c8976368b.png" /><br />Javascript
@@ -86,7 +92,9 @@ src
 **axios** | api를 통한 비동기 통신 시 사용
 **redux-toolkit** | 전역 상태 관리 시 사용
 
-### 6. 요구 사항 구현 내역
+<br>
+
+## 6. 요구 사항 구현 내역
 > #### 목록 페이지
 >> **1. 이슈 목록은 10개 단위로 페이지네이션 구현**<br />▶️ 10페이지 단위로 마지막 페이지에서 다음 페이지 누르면 다음 10페이지 뜨도록<br />▶️ 현재 페이지 숫자는 포커스 되어있도록<br />▶ 버튼은 [맨처음][이전]1, [2], 3, 4, 5 [다음][맨끝]으로 구현<br />
 ![gittask_1](https://user-images.githubusercontent.com/112946860/225962071-4e27282a-86ec-4916-8cbf-9e438e432dcb.gif)
@@ -99,8 +107,9 @@ src
 <br /><br /><br /><br />-페이지네이션에서 뒤로가기
 ![gittask_4](https://user-images.githubusercontent.com/112946860/225973666-ca914629-6e61-4efd-b074-4b22fb7e444c.gif)
 
+<br>
 
-### 7. 코드 및 깃허브 커밋 컨벤션
+## 7. 코드 및 깃허브 커밋 컨벤션
 커밋 컨벤션 | 내용
 |:--|:--|
 ✨ Feat | 새로운 기능 추가
