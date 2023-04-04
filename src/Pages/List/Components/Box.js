@@ -1,16 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import {
-	FlexAlignCSS,
-	FlexColumnCSS,
-	HoverCSS,
-	ShadowCSS,
-} from '../../../Styles/common'
+import { FlexColumnCSS, HoverCSS, ShadowCSS } from '../../../Styles/common'
 import { BsChat } from 'react-icons/bs'
 import remarkGfm from 'remark-gfm'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { useNavigate, useParams } from 'react-router-dom'
+import IconBox from '../../../Components/IconBox/IconBox'
+import Line from '../../../Components/Line/Line'
 
 function IssueBox({ number, title, body, commentLen, updatedAt }) {
 	const { owner, repository } = useParams()
@@ -18,7 +15,7 @@ function IssueBox({ number, title, body, commentLen, updatedAt }) {
 
 	return (
 		<S.Wrapper onClick={() => navigate(`/${owner}/${repository}/${number}`)}>
-			<S.LineContainer
+			<Line
 				css={css`
 					align-items: flex-start;
 				`}
@@ -31,22 +28,23 @@ function IssueBox({ number, title, body, commentLen, updatedAt }) {
 				>
 					{title}
 				</S.Title>
-			</S.LineContainer>
+			</Line>
 			<S.ContentBox>
 				<ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
-				<S.LineContainerEnd
+				<Line
+					justify={'flex-end'}
 					css={css`
 						margin-top: 30px;
 					`}
 				>
 					<S.SmallText>last updated : {updatedAt}</S.SmallText>
-					<S.IconBox
+					<IconBox
 						css={css`
 							margin-left: 10px;
 						`}
 					>
 						<BsChat size={19} />
-					</S.IconBox>
+					</IconBox>
 					<S.Text
 						css={css`
 							margin-left: 3px;
@@ -54,7 +52,7 @@ function IssueBox({ number, title, body, commentLen, updatedAt }) {
 					>
 						{commentLen}
 					</S.Text>
-				</S.LineContainerEnd>
+				</Line>
 			</S.ContentBox>
 		</S.Wrapper>
 	)
@@ -78,13 +76,7 @@ const Wrapper = styled.div`
 		padding-top: 20px;
 	}
 `
-const LineContainer = styled.div`
-	${FlexAlignCSS}
-`
-const LineContainerEnd = styled.div`
-	${FlexAlignCSS}
-	justify-content: flex-end;
-`
+
 const ContentBox = styled.div`
 	padding: 0 40px;
 	margin-top: 20px;
@@ -110,19 +102,12 @@ const Title = styled(Text)`
 	font-weight: bold;
 	width: 90%;
 `
-const IconBox = styled.div`
-	${HoverCSS}
-	padding: 3px;
-`
 
 const S = {
 	Wrapper,
-	LineContainer,
-	LineContainerEnd,
 	ContentBox,
 	Text,
 	SmallText,
 	Title,
 	BoldText,
-	IconBox,
 }

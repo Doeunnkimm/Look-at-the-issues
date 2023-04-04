@@ -3,6 +3,7 @@ import { S } from './style'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import IconBox from '../../../Components/IconBox/IconBox'
 
 function SortBox({ setGoPage }) {
 	const [choice, setChoice] = useState('')
@@ -27,9 +28,9 @@ function SortBox({ setGoPage }) {
 		<>
 			<S.Wrapper onClick={onOpenFilter}>
 				<S.Text>{choice}</S.Text>
-				<S.IconBox>
+				<IconBox>
 					<MdOutlineKeyboardArrowDown size={20} />
-				</S.IconBox>
+				</IconBox>
 			</S.Wrapper>
 			<S.FilterSpreadBox state={isOpenFilter}>
 				<S.Text

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { FlexCenterCSS, FlexColumnCSS } from '../Styles/common'
+import { FlexCenterCSS, FlexColumnCSS } from '../../Styles/common'
 
 function Loading() {
 	return (

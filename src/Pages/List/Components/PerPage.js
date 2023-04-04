@@ -4,6 +4,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { css } from '@emotion/react'
+import IconBox from '../../../Components/IconBox/IconBox'
 
 function PerPageBox({ setGoPage }) {
 	const [choice, setChoice] = useState('')
@@ -28,9 +29,9 @@ function PerPageBox({ setGoPage }) {
 		<>
 			<S.Wrapper onClick={onOpenFilter}>
 				<S.Text>{choice}</S.Text>
-				<S.IconBox>
+				<IconBox>
 					<MdOutlineKeyboardArrowDown size={20} />
-				</S.IconBox>
+				</IconBox>
 			</S.Wrapper>
 			<S.FilterSpreadBox
 				state={isOpenFilter}

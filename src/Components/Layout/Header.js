@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { searchActions } from '../../Stores/search'
 import { useNavigate } from 'react-router-dom'
+import IconBox from '../IconBox/IconBox'
 
 function Header() {
 	const dispatch = useDispatch()
@@ -52,9 +53,9 @@ function Header() {
 						placeholder="깃허브 레포지토리 주소를 복붙하세요 !"
 						onKeyDown={handleKeyPress}
 					/>
-					<S.IconBox onClick={onSubmitSearchText}>
+					<IconBox onClick={onSubmitSearchText}>
 						<BiSearchAlt size={40} />
-					</S.IconBox>
+					</IconBox>
 				</S.InputBox>
 			</S.Container>
 		</S.Wrapper>
@@ -110,10 +111,6 @@ const Input = styled.input`
 	color: ${({ theme }) => theme.PALETTE.gray[300]};
 	width: 100%;
 `
-const IconBox = styled.div`
-	margin-right: 10px;
-	${HoverCSS}
-`
 
 const S = {
 	Wrapper,
@@ -122,5 +119,4 @@ const S = {
 	InputBox,
 	Input,
 	Text,
-	IconBox,
 }

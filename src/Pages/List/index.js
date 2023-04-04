@@ -1,9 +1,10 @@
+/** @jsxImportSource @emotion/react */
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import styled from '@emotion/styled'
-import { FlexAlignCSS } from '../../Styles/common'
+import Line from '../../Components/Line/Line'
 
 import { getIssues } from '../../Stores/issues'
 import { searchActions } from '../../Stores/search'
@@ -13,7 +14,8 @@ import PerPageBox from './Components/PerPage'
 import SortBox from './Components/Sort'
 
 import Pagination from '../../Utils/Pagination'
-import Loading from '../../Components/Loading'
+import Loading from '../../Components/Loading/Loading'
+import { css } from '@emotion/react'
 
 const CONST_ITEM_COUNT = 200
 const LIMIT = 10
@@ -51,48 +53,46 @@ function ListPage() {
 		getData()
 	}, [getData])
 
-	return (
-		<>
-			{getIssuesState.loading ? (
-				<Loading />
-			) : (
-				<>
-					{issues.length > 0 && (
-						<>
-							<S.Wrapper>
-								<S.Line>
-									<SortBox setGoPage={setGoPage} />
-									<PerPageBox setGoPage={setGoPage} />
-								</S.Line>
-								{issues.length > 0 &&
-									issues.map((issue, idx) => (
-										<IssueBox
-											key={idx}
-											number={issue.number}
-											title={issue.title}
-											body={
-												issue.body
-													? issue.body.split('').slice(0, 99).join('') + ' ...'
-													: issue.body
-											}
-											commentLen={issue.comments}
-											updatedAt={issue.updated_at}
-										/>
-									))}
-							</S.Wrapper>
-							<Pagination
-								totalPage={totalPage}
-								limit={LIMIT}
-								page={goPage}
-								nowPage={page}
-								setPage={setGoPage}
+	if (getIssuesState.loading) return <Loading />
+
+	if (issues.length > 0)
+		return (
+			<>
+				<S.Wrapper>
+					<Line
+						justify={'flex-start'}
+						css={css`
+							position: relative;
+						`}
+					>
+						<SortBox setGoPage={setGoPage} />
+						<PerPageBox setGoPage={setGoPage} />
+					</Line>
+					{issues.length > 0 &&
+						issues.map((issue, idx) => (
+							<IssueBox
+								key={idx}
+								number={issue.number}
+								title={issue.title}
+								body={
+									issue.body
+										? issue.body.split('').slice(0, 99).join('') + ' ...'
+										: issue.body
+								}
+								commentLen={issue.comments}
+								updatedAt={issue.updated_at}
 							/>
-						</>
-					)}
-				</>
-			)}
-		</>
-	)
+						))}
+				</S.Wrapper>
+				<Pagination
+					totalPage={totalPage}
+					limit={LIMIT}
+					page={goPage}
+					nowPage={page}
+					setPage={setGoPage}
+				/>
+			</>
+		)
 }
 export default ListPage
 
@@ -103,10 +103,5 @@ const Wrapper = styled.div`
 		width: 100%;
 	}
 `
-const Line = styled.div`
-	${FlexAlignCSS}
-	justify-content: flex-start;
-	position: relative;
-`
 
-const S = { Wrapper, Line }
+const S = { Wrapper }

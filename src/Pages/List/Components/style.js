@@ -22,11 +22,6 @@ const Text = styled.div`
 		font-size: 14px;
 	}
 `
-const IconBox = styled.div`
-	margin-top: 3px;
-	${HoverCSS}
-`
-
 const FilterSpreadBox = styled.div`
 	position: absolute;
 	top: 58px;
@@ -43,4 +38,4 @@ const FilterSpreadBox = styled.div`
 	}
 `
 
-export const S = { Wrapper, Text, IconBox, FilterSpreadBox }
+export const S = { Wrapper, Text, FilterSpreadBox }
