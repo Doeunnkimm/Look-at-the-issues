@@ -9,6 +9,18 @@ const PALETTE = {
 	},
 }
 
-const theme = { PALETTE }
+const DEVICE_SIZES = {
+	mobile: 575,
+	tablet: 991,
+	laptop: 1199,
+}
+
+const DEVICE = {
+	mobile: `screen and (max-width: ${DEVICE_SIZES.mobile}px)`,
+	tablet: `screen and (max-width: ${DEVICE_SIZES.tablet}px)`,
+	laptop: `screen and (max-width: ${DEVICE_SIZES.laptop}px)`,
+}
+
+const theme = { PALETTE, DEVICE }
 
 export default theme

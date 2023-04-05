@@ -33,6 +33,7 @@ function DetailPage() {
 				<Line
 					css={css`
 						margin-top: 20px;
+						width: 100%;
 					`}
 				>
 					<S.Box>
@@ -88,7 +89,7 @@ const Container = styled.div`
 	width: 70%;
 	${FlexColumnCSS}
 	padding-top: 40px;
-	@media screen and (max-width: 1700px) {
+	@media ${({ theme }) => theme.DEVICE.tablet} {
 		width: 90%;
 	}
 `
@@ -99,7 +100,7 @@ const Title = styled.div`
 	font-size: 28px;
 	padding-bottom: 18px;
 	border-bottom: 1px solid ${({ theme }) => theme.PALETTE.gray[200]};
-	@media screen and (max-width: 700px) {
+	@media ${({ theme }) => theme.DEVICE.tablet} {
 		font-size: 20px;
 	}
 `
@@ -110,18 +111,20 @@ const Number = styled.span`
 `
 
 const Box = styled.div`
-	width: 80%;
+	width: 100%;
 	margin-bottom: auto;
 	border: 1px solid var(--color-purple);
 	background-color: var(--color-light-purple);
 	border-radius: 20px;
 	margin-right: 30px;
 	padding: 20px;
-	@media screen and (max-width: 1700px) {
-		width: 100%;
+	overflow: overlay;
+	@media ${({ theme }) => theme.DEVICE.tablet} {
+		font-size: 13px;
+		margin-right: 0px;
 	}
-	@media screen and (max-width: 700px) {
-		font-size: 14px;
+	@media ${({ theme }) => theme.DEVICE.mobile} {
+		width: 100%;
 	}
 `
 
@@ -129,7 +132,7 @@ const SideBox = styled.div`
 	width: 15%;
 	margin-bottom: auto;
 	${FlexColumnCSS};
-	@media screen and (max-width: 1700px) {
+	@media ${({ theme }) => theme.DEVICE.tablet} {
 		display: none;
 	}
 `

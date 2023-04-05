@@ -54,7 +54,7 @@ function Header() {
 						onKeyDown={handleKeyPress}
 					/>
 					<IconBox onClick={onSubmitSearchText}>
-						<BiSearchAlt size={40} />
+						<BiSearchAlt size={'3vw'} />
 					</IconBox>
 				</S.InputBox>
 			</S.Container>
@@ -76,15 +76,9 @@ const Container = styled.div`
 `
 const Image = styled.img`
 	width: 10%;
-	${HoverCSS}
-	@media screen and (max-width: 1040px) {
-		width: 20%;
-	}
-	@media screen and (max-width: 820px) {
+	${HoverCSS};
+	@media ${({ theme }) => theme.DEVICE.tablet} {
 		width: 22%;
-	}
-	@media screen and (max-width: 700px) {
-		width: 27%;
 	}
 `
 const Text = styled.div`
@@ -104,12 +98,18 @@ const InputBox = styled.div`
 	padding-left: 35px;
 	${FlexAlignCSS}
 	justify-content: space-between;
+	@media ${({ theme }) => theme.DEVICE.tablet} {
+		padding: 10px;
+	}
 `
 const Input = styled.input`
 	font-size: 24px;
 	font-weight: bold;
 	color: ${({ theme }) => theme.PALETTE.gray[300]};
 	width: 100%;
+	@media ${({ theme }) => theme.DEVICE.tablet} {
+		font-size: 15px;
+	}
 `
 
 const S = {

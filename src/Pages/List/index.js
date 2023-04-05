@@ -99,7 +99,7 @@ export default ListPage
 const Wrapper = styled.div`
 	width: 50%;
 	margin: 20px auto;
-	@media screen and (max-width: 830px) {
+	@media ${({ theme }) => theme.DEVICE.tablet} {
 		width: 100%;
 	}
 `
