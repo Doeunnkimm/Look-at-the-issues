@@ -16,7 +16,7 @@
 - 기간은 22.03.13 ~ 22.03.18 동안 진행했습니다.
 
 ## 2. 배포 주소
-[이슈를 보넷]https://doeunnkimm-gitapitak-gbyedm54e-doeunnkimm-gitapitask.vercel.app/)
+[이슈를 보넷](https://doeunnkimm-gitapitak-gbyedm54e-doeunnkimm-gitapitask.vercel.app/)
 
 <br>
 
